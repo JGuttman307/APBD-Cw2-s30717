@@ -61,4 +61,22 @@ public class LoanService : ILoanService
 
         return 0;
     }
+
+    public void GenerujRaport(List<Equipment.Equipment> sprzet)
+    {
+        var calySprzet = sprzet.Count;
+        var dostepny =  sprzet.Count(e=>e.Dostepnosc == EquipmentStatus.Dostepny);
+        var niedostepny = calySprzet - dostepny;
+        
+        var aktualneWypozyczenia = _wypozyczenia.Count(w=>!w.czyOddane);
+        var spoznioneWypozyczenia = _wypozyczenia.Count(w=>!w.czyOddane &&  w.TerminZwrotu < DateTime.Now);
+        
+        Console.WriteLine("\n ----------RAPORT---------");
+        Console.WriteLine($"Liczba sprzętu: {calySprzet}");
+        Console.WriteLine($"Dostepne: {dostepny}");
+        Console.WriteLine($"Niedostepne: {niedostepny}");
+        Console.WriteLine($"Aktywne wypożyczenia: {aktualneWypozyczenia}");
+        Console.WriteLine($"Przeterminowane:  {spoznioneWypozyczenia}");
+        Console.WriteLine("----------------------------");
+    }
 }
