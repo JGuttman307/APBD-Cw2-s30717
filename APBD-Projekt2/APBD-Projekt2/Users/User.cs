@@ -2,13 +2,14 @@
 
 public abstract class User
 {
-    public int ID { get; }
+    private static int _nextId = 1;
+
+    public int ID { get; } = _nextId++;
     public string Imie { get; }
     public string Nazwisko { get; }
 
-    public User(int id, string imie, string nazwisko)
+    public User( string imie, string nazwisko)
     {
-        ID = id;
         Imie = imie;
         Nazwisko = nazwisko;
     }

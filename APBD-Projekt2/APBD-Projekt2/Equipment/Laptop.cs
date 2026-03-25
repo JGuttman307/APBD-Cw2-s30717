@@ -2,9 +2,9 @@
 
 public class Laptop : Equipment
 {
-    public bool WindowslubMac{get;}
+    public string WindowslubMac{get;}
     public string Procesor { get; }
-    public Laptop(string nazwa, bool windowslubMac, string procesor) : base(nazwa)
+    public Laptop(string nazwa, string windowslubMac, string procesor) : base(nazwa)
     {
         WindowslubMac = windowslubMac;
         Procesor = procesor;
